@@ -1,6 +1,6 @@
-# Vagrant Ubuntu Desktop Server
+# Vagrant Ubuntu Server
 
-Create a VagrantUp base image for an ubuntu 14.01.1 Virtual Machine
+Boot a Ubuntu Server quickly with VagrantUp
 
 ##Prerequisites
 
