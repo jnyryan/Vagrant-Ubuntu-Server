@@ -16,3 +16,8 @@ To start up vagrant using the settings in the Vagrantfile use this command.
 ``` bash
 vagrant up
 ```
+
+The server runs in headless mode, to connect to the shell use the inbuilt vagrant ssh
+```bash
+vagrant ssh
+```
