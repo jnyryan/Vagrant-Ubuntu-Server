@@ -1,3 +1,3 @@
 #!/bin/bash
 apt-get update -y
-apt-get install -y git curl
+apt-get install -y git curl zsh

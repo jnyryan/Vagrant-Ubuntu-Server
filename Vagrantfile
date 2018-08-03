@@ -15,6 +15,24 @@ Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/trusty64"
   config.vm.provision "shell", path: "setup.sh"
 
+  # Clone Oh My Zsh from the git repo
+  config.vm.provision :shell, privileged: false,
+    inline: "wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh"
+
+  # Copy in the default .zshrc config file
+  config.vm.provision :shell, privileged: false,
+    inline: "cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc"
+
+  # change the theme
+  config.vm.provision :shell, privileged: false,
+    inline: "sed -i 's/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"3den\"/g' ~/.zshrc"
+
+  # Change the vagrant user's shell to use zsh
+  config.vm.provision :shell, privileged: true, inline: "chsh -s /bin/zsh vagrant"
+
+  # clean up some locale
+  ENV['LC_ALL']="en_US.UTF-8"
+
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
@@ -44,7 +62,8 @@ Vagrant.configure("2") do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  # config.vm.synced_folder "../data", "/vagrant_data"
+  config.vm.synced_folder "../", "/home/vagrant/apps", disabled: false, owner: "vagrant",
+  group: "vagrant"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.

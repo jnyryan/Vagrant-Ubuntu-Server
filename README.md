@@ -1,6 +1,6 @@
 # Vagrant Ubuntu Server
 
-Boot a Ubuntu Server quickly with VagrantUp
+Boot a Ubuntu Server quickly with VagrantUp with z-shell
 
 ##Prerequisites
 
