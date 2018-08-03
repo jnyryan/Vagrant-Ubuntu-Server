@@ -25,7 +25,7 @@ Vagrant.configure("2") do |config|
 
   # change the theme
   config.vm.provision :shell, privileged: false,
-    inline: "sed -i 's/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"3den\"/g' ~/.zshrc"
+    inline: "sed -i 's/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"bureau\"/g' ~/.zshrc"
 
   # Change the vagrant user's shell to use zsh
   config.vm.provision :shell, privileged: true, inline: "chsh -s /bin/zsh vagrant"
